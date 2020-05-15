@@ -1,0 +1,160 @@
+object Form1: TForm1
+  Left = 538
+  Height = 357
+  Top = 223
+  Width = 575
+  Caption = 'Form1'
+  ClientHeight = 357
+  ClientWidth = 575
+  LCLVersion = '2.0.6.0'
+  object EName: TEdit
+    Left = 224
+    Height = 23
+    Top = 40
+    Width = 200
+    TabOrder = 0
+  end
+  object EStambuk: TEdit
+    Left = 224
+    Height = 23
+    Top = 80
+    Width = 200
+    TabOrder = 1
+  end
+  object EKelas: TEdit
+    Left = 224
+    Height = 23
+    Top = 120
+    Width = 200
+    TabOrder = 2
+  end
+  object Label1: TLabel
+    Left = 152
+    Height = 15
+    Top = 48
+    Width = 32
+    Caption = 'Nama'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 152
+    Height = 15
+    Top = 80
+    Width = 47
+    Caption = 'Stambuk'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 152
+    Height = 15
+    Top = 120
+    Width = 27
+    Caption = 'Kelas'
+    ParentColor = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 8
+    Height = 152
+    Top = 184
+    Width = 560
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource1
+    TabOrder = 3
+  end
+  object Button1: TButton
+    Left = 349
+    Height = 25
+    Top = 152
+    Width = 75
+    Caption = 'Submit'
+    OnClick = Button1Click
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 256
+    Height = 25
+    Top = 152
+    Width = 75
+    Caption = 'Refresh'
+    OnClick = Button2Click
+    TabOrder = 5
+  end
+  object MySQL56Connection1: TMySQL56Connection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'lazarus_mahasiswa'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3306'
+    )
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = 'localhost'
+    SkipLibraryVersionCheck = False
+    left = 8
+    top = 8
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL56Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    left = 8
+    top = 56
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = MySQL56Connection1
+    left = 8
+    top = 104
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery2
+    left = 48
+    top = 8
+  end
+  object SQLQuery2: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'nama'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'stambuk'
+        DataType = ftString
+        Precision = -1
+        Size = 45
+      end    
+      item
+        Name = 'kelas'
+        DataType = ftString
+        Precision = -1
+        Size = 45
+      end>
+    Active = True
+    Database = MySQL56Connection1
+    Transaction = SQLTransaction2
+    SQL.Strings = (
+      'select * from mahasiswa'
+    )
+    Params = <>
+    left = 48
+    top = 56
+  end
+  object SQLTransaction2: TSQLTransaction
+    Active = True
+    Database = MySQL56Connection1
+    left = 48
+    top = 104
+  end
+end
